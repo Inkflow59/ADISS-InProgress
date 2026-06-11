@@ -1,0 +1,339 @@
+:root {
+  --red: #e63946;
+  --red-dark: #c1121f;
+  --white: #ffffff;
+  --grey: #6b6b6b;
+}
+
+.construction-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  overflow: hidden;
+  text-align: center;
+  padding: 48px 16px;
+}
+
+/* ------------------------------------------------------- */
+/* Top & bottom striped "barrier tape" bars                 */
+/* ------------------------------------------------------- */
+.stripes-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 22px;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--red) 0 24px,
+    var(--white) 24px 48px
+  );
+  background-size: 68px 68px;
+  animation: stripes-move 2.5s linear infinite;
+  box-shadow: 0 0 12px rgba(230, 57, 70, 0.35);
+}
+
+.stripes-top {
+  top: 0;
+}
+
+.stripes-bottom {
+  bottom: 0;
+}
+
+@keyframes stripes-move {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 68px 0;
+  }
+}
+
+/* ------------------------------------------------------- */
+/* Floating background shapes                               */
+/* ------------------------------------------------------- */
+.floating-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--red);
+  opacity: 0.08;
+  animation: float 10s ease-in-out infinite;
+}
+
+.shape-1 {
+  width: 120px;
+  height: 120px;
+  top: 10%;
+  left: 8%;
+  animation-duration: 12s;
+}
+
+.shape-2 {
+  width: 60px;
+  height: 60px;
+  top: 20%;
+  right: 12%;
+  animation-duration: 9s;
+  animation-delay: 0.5s;
+}
+
+.shape-3 {
+  width: 90px;
+  height: 90px;
+  bottom: 15%;
+  left: 15%;
+  animation-duration: 11s;
+  animation-delay: 1s;
+}
+
+.shape-4 {
+  width: 40px;
+  height: 40px;
+  bottom: 25%;
+  right: 20%;
+  animation-duration: 8s;
+  animation-delay: 0.2s;
+}
+
+.shape-5 {
+  width: 150px;
+  height: 150px;
+  top: 50%;
+  left: -40px;
+  opacity: 0.05;
+  animation-duration: 14s;
+}
+
+.shape-6 {
+  width: 70px;
+  height: 70px;
+  top: 65%;
+  right: -20px;
+  opacity: 0.06;
+  animation-duration: 10s;
+  animation-delay: 0.8s;
+}
+
+.shape-7 {
+  width: 30px;
+  height: 30px;
+  top: 35%;
+  left: 45%;
+  animation-duration: 7s;
+  animation-delay: 1.4s;
+}
+
+.shape-8 {
+  width: 50px;
+  height: 50px;
+  bottom: 8%;
+  right: 45%;
+  animation-duration: 9s;
+  animation-delay: 0.6s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-30px) scale(1.08);
+  }
+}
+
+/* ------------------------------------------------------- */
+/* Main content                                              */
+/* ------------------------------------------------------- */
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 560px;
+}
+
+.cone-wrapper {
+  margin-bottom: 12px;
+}
+
+.cone {
+  display: inline-block;
+  font-size: 4rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(-6deg);
+  }
+}
+
+.title {
+  color: var(--red);
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.word {
+  display: inline-block;
+  white-space: nowrap;
+  margin: 0 0.2em;
+}
+
+.letter {
+  display: inline-block;
+  animation: wave 1.6s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-10px);
+    color: var(--red-dark);
+  }
+}
+
+.subtitle {
+  color: var(--grey);
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------- */
+/* Progress bar                                              */
+/* ------------------------------------------------------- */
+.progress-track {
+  width: min(320px, 80vw);
+  height: 12px;
+  border-radius: 999px;
+  background: #f6dcdf;
+  overflow: hidden;
+  margin-bottom: 28px;
+  border: 1px solid #f1c0c5;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 40%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--red), var(--red-dark));
+  animation: loading 1.8s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+/* ------------------------------------------------------- */
+/* Gears                                                     */
+/* ------------------------------------------------------- */
+.gears {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.gear {
+  display: inline-block;
+  font-size: 2rem;
+}
+
+.gear-1 {
+  animation: spin 4s linear infinite;
+}
+
+.gear-2 {
+  font-size: 1.5rem;
+  animation: spin-reverse 3s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* ------------------------------------------------------- */
+/* Status / dots                                             */
+/* ------------------------------------------------------- */
+.status {
+  color: var(--red-dark);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.dots span {
+  animation: blink 1.4s infinite;
+  opacity: 0;
+}
+
+.dots span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%,
+  80%,
+  100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
